@@ -470,7 +470,7 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
             
             <div className="flex justify-between items-center border-b border-slate-800/50 pb-2">
               <span className="text-slate-400">4. Calculated Unbounded Price (1 × 2 × 3)</span>
-              <span className="font-bold text-slate-200">€{prediction ? prediction.dynamic_breakdown.unbounded_price.toFixed(2) : '122.64'}</span>
+              <span className="font-bold text-slate-200">€{prediction ? (prediction.dynamic_breakdown.ml_base_price * prediction.dynamic_breakdown.occupancy_multiplier * prediction.dynamic_breakdown.lead_time_multiplier).toFixed(2) : '122.64'}</span>
             </div>
 
             <div className="flex justify-between items-center pt-1">
@@ -478,12 +478,9 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
               <span className="font-bold text-purple-300 text-sm">€{prediction ? prediction.final_recommended_price.toFixed(2) : '122.64'}</span>
             </div>
             
-            {(prediction?.dynamic_breakdown.is_clamped_to_floor || prediction?.dynamic_breakdown.is_clamped_to_ceiling || prediction?.dynamic_breakdown.surge_capped) && (
+            {prediction?.dynamic_breakdown.clamped && (
               <div className="mt-2 bg-amber-500/10 text-amber-400 p-2 rounded border border-amber-500/20 text-[10px]">
-                <strong>Rule Applied:</strong> 
-                {prediction.dynamic_breakdown.is_clamped_to_floor && ' Price was raised to meet the minimum floor threshold.'}
-                {prediction.dynamic_breakdown.is_clamped_to_ceiling && ' Price was reduced to respect the maximum ceiling threshold.'}
-                {prediction.dynamic_breakdown.surge_capped && ' Maximum daily surge limit (+60%) was applied.'}
+                <strong>Rule Applied:</strong> The mathematical price exceeded operational boundaries. It was clamped to stay within the permitted floor [€{prediction.dynamic_breakdown.floor_price}] and ceiling [€{prediction.dynamic_breakdown.ceiling_price}] rates, or hit the max daily surge cap.
               </div>
             )}
           </div>
