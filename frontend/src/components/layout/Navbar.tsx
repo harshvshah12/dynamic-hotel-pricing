@@ -97,6 +97,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {isBackendHealthy ? 'API: 4 Models + 2 Ensembles' : 'Connecting API...'}
               </span>
             </div>
+            
+            <button
+              onClick={() => setActiveTab('explanation')}
+              className="ml-2 flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-xs font-semibold hover:bg-indigo-500/30 transition-all"
+            >
+              <Layers className="w-4 h-4" />
+              <span>Used 4 Models + 2 Ensemble</span>
+            </button>
           </div>
         </div>
 
