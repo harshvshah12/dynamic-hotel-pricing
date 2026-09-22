@@ -48,10 +48,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-bold text-lg text-white tracking-tight">
-                  PRICEX
+                  Lumina
                 </span>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
-                  Dynamic RMS v1.0
+                  RMS v1.4
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 font-medium">

@@ -160,18 +160,19 @@ export const App: React.FC = () => {
         {activeTab === 'explanation' && <ModelsExplanationView />}
       </main>
 
-      {/* Modern Academic & Technical Footer */}
-      <footer className="bg-slate-900/60 border-t border-slate-800/80 py-6 mt-12 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <span className="font-bold text-slate-300">Dynamic Hotel Pricing Management System</span>
-            <span className="mx-2">•</span>
-            <span>B.Tech CSE (AI & Data Science) Capstone</span>
+      {/* System Status Footer */}
+      <footer className="sticky bottom-0 z-50 bg-slate-950/80 backdrop-blur-md border-t border-slate-800/80 py-2 mt-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-[10px] uppercase tracking-wider font-mono text-slate-500">
+          <div className="flex items-center space-x-6">
+            <span className="flex items-center text-emerald-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-2" />
+              LUMINA RMS ONLINE
+            </span>
+            <span>DATASET: Antonio (2019)</span>
           </div>
-          <div className="flex items-center space-x-4 font-mono text-[11px]">
-            <span>Dataset: Antonio et al. (2019)</span>
-            <span>•</span>
-            <span className="text-emerald-400">4 Base Regressors + 2 Ensembles</span>
+          <div className="flex items-center space-x-6 hidden sm:flex">
+            <span>LATENCY: &lt;50ms</span>
+            <span className="text-indigo-400">MODEL ENSEMBLE: V1.4.2</span>
           </div>
         </div>
       </footer>
