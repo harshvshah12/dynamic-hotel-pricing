@@ -1,0 +1,15 @@
+{
+  "weights": {
+    "baseline_ridge": 0.0,
+    "random_forest": 0.7122,
+    "hist_gradient_boosting": 0.0161,
+    "extra_trees": 0.2716
+  },
+  "model_keys": [
+    "baseline_ridge",
+    "random_forest",
+    "hist_gradient_boosting",
+    "extra_trees"
+  ],
+  "optimization_loss_mse": 306.5427
+}

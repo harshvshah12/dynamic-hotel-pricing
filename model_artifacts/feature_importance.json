@@ -1,0 +1,276 @@
+{
+  "top_feature_groups": [
+    {
+      "feature": "reserved_room_type",
+      "importance_pct": 17.44,
+      "raw_score": 0.1744
+    },
+    {
+      "feature": "total_guests",
+      "importance_pct": 10.53,
+      "raw_score": 0.1053
+    },
+    {
+      "feature": "estimated_occupancy_rate",
+      "importance_pct": 10.45,
+      "raw_score": 0.1045
+    },
+    {
+      "feature": "hotel",
+      "importance_pct": 10.1,
+      "raw_score": 0.101
+    },
+    {
+      "feature": "market_segment",
+      "importance_pct": 7.3,
+      "raw_score": 0.073
+    },
+    {
+      "feature": "cos_week",
+      "importance_pct": 6.29,
+      "raw_score": 0.0629
+    },
+    {
+      "feature": "season",
+      "importance_pct": 6.03,
+      "raw_score": 0.0603
+    },
+    {
+      "feature": "meal",
+      "importance_pct": 4.72,
+      "raw_score": 0.0472
+    },
+    {
+      "feature": "sin_week",
+      "importance_pct": 4.22,
+      "raw_score": 0.0422
+    },
+    {
+      "feature": "lead_time",
+      "importance_pct": 4.18,
+      "raw_score": 0.0418
+    },
+    {
+      "feature": "cos_month",
+      "importance_pct": 2.91,
+      "raw_score": 0.0291
+    },
+    {
+      "feature": "sin_month",
+      "importance_pct": 2.9,
+      "raw_score": 0.029
+    },
+    {
+      "feature": "lead_time_category",
+      "importance_pct": 1.84,
+      "raw_score": 0.0184
+    },
+    {
+      "feature": "is_family",
+      "importance_pct": 1.42,
+      "raw_score": 0.0142
+    },
+    {
+      "feature": "adults",
+      "importance_pct": 1.1,
+      "raw_score": 0.011
+    },
+    {
+      "feature": "total_stay_nights",
+      "importance_pct": 1.08,
+      "raw_score": 0.0108
+    },
+    {
+      "feature": "customer_type",
+      "importance_pct": 1.02,
+      "raw_score": 0.0102
+    },
+    {
+      "feature": "distribution_channel",
+      "importance_pct": 1.0,
+      "raw_score": 0.01
+    },
+    {
+      "feature": "stays_in_week_nights",
+      "importance_pct": 0.9,
+      "raw_score": 0.009
+    },
+    {
+      "feature": "children",
+      "importance_pct": 0.75,
+      "raw_score": 0.0075
+    },
+    {
+      "feature": "total_of_special_requests",
+      "importance_pct": 0.7,
+      "raw_score": 0.007
+    },
+    {
+      "feature": "stays_in_weekend_nights",
+      "importance_pct": 0.56,
+      "raw_score": 0.0056
+    },
+    {
+      "feature": "deposit_type",
+      "importance_pct": 0.56,
+      "raw_score": 0.0056
+    },
+    {
+      "feature": "booking_changes",
+      "importance_pct": 0.47,
+      "raw_score": 0.0047
+    },
+    {
+      "feature": "is_weekend_stay",
+      "importance_pct": 0.38,
+      "raw_score": 0.0038
+    },
+    {
+      "feature": "previous_cancellations",
+      "importance_pct": 0.38,
+      "raw_score": 0.0038
+    },
+    {
+      "feature": "required_car_parking_spaces",
+      "importance_pct": 0.28,
+      "raw_score": 0.0028
+    },
+    {
+      "feature": "days_in_waiting_list",
+      "importance_pct": 0.23,
+      "raw_score": 0.0023
+    },
+    {
+      "feature": "previous_bookings_not_canceled",
+      "importance_pct": 0.15,
+      "raw_score": 0.0015
+    },
+    {
+      "feature": "babies",
+      "importance_pct": 0.1,
+      "raw_score": 0.001
+    }
+  ],
+  "detailed_encoded_features": [
+    {
+      "name": "reserved_room_type_A",
+      "importance": 0.1229
+    },
+    {
+      "name": "total_guests",
+      "importance": 0.1053
+    },
+    {
+      "name": "estimated_occupancy_rate",
+      "importance": 0.1045
+    },
+    {
+      "name": "cos_week",
+      "importance": 0.0629
+    },
+    {
+      "name": "season_Summer",
+      "importance": 0.0524
+    },
+    {
+      "name": "hotel_Resort Hotel",
+      "importance": 0.0521
+    },
+    {
+      "name": "hotel_City Hotel",
+      "importance": 0.0489
+    },
+    {
+      "name": "sin_week",
+      "importance": 0.0422
+    },
+    {
+      "name": "lead_time",
+      "importance": 0.0418
+    },
+    {
+      "name": "cos_month",
+      "importance": 0.0291
+    },
+    {
+      "name": "sin_month",
+      "importance": 0.029
+    },
+    {
+      "name": "market_segment_Offline TA/TO",
+      "importance": 0.026
+    },
+    {
+      "name": "meal_BB",
+      "importance": 0.0241
+    },
+    {
+      "name": "market_segment_Online TA",
+      "importance": 0.0221
+    },
+    {
+      "name": "meal_HB",
+      "importance": 0.0188
+    },
+    {
+      "name": "reserved_room_type_D",
+      "importance": 0.015
+    },
+    {
+      "name": "is_family",
+      "importance": 0.0142
+    },
+    {
+      "name": "market_segment_Groups",
+      "importance": 0.0137
+    },
+    {
+      "name": "adults",
+      "importance": 0.011
+    },
+    {
+      "name": "total_stay_nights",
+      "importance": 0.0108
+    },
+    {
+      "name": "reserved_room_type_G",
+      "importance": 0.0108
+    },
+    {
+      "name": "reserved_room_type_F",
+      "importance": 0.0099
+    },
+    {
+      "name": "lead_time_category_Long",
+      "importance": 0.0097
+    },
+    {
+      "name": "stays_in_week_nights",
+      "importance": 0.009
+    },
+    {
+      "name": "market_segment_Direct",
+      "importance": 0.0088
+    },
+    {
+      "name": "children",
+      "importance": 0.0075
+    },
+    {
+      "name": "reserved_room_type_B",
+      "importance": 0.0071
+    },
+    {
+      "name": "total_of_special_requests",
+      "importance": 0.007
+    },
+    {
+      "name": "stays_in_weekend_nights",
+      "importance": 0.0056
+    },
+    {
+      "name": "reserved_room_type_E",
+      "importance": 0.0049
+    }
+  ]
+}

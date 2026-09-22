@@ -1,0 +1,18 @@
+{
+  "dataset": "Hotel Booking Demand Dataset (Antonio et al., 2019)",
+  "training_samples": 93714,
+  "test_samples": 23429,
+  "feature_count": 65,
+  "models_trained": [
+    "baseline_ridge",
+    "random_forest",
+    "hist_gradient_boosting",
+    "extra_trees",
+    "stacking_ensemble",
+    "weighted_ensemble"
+  ],
+  "target_variable": "adr",
+  "training_timestamp": "2026-08-25 10:50:42",
+  "random_seed": 42,
+  "cross_validation_folds": 5
+}

@@ -1,0 +1,184 @@
+{
+  "total_records": 117143,
+  "resort_records": 39153,
+  "city_records": 77990,
+  "overall_mean_adr": 103.71,
+  "overall_median_adr": 95.0,
+  "overall_min_adr": 10.0,
+  "overall_max_adr": 510.0,
+  "monthly_trends": [
+    {
+      "month": "Jan",
+      "month_num": 1,
+      "resort_adr": 51.03,
+      "city_adr": 84.5,
+      "overall_adr": 72.19
+    },
+    {
+      "month": "Feb",
+      "month_num": 2,
+      "resort_adr": 56.33,
+      "city_adr": 86.95,
+      "overall_adr": 75.17
+    },
+    {
+      "month": "Mar",
+      "month_num": 3,
+      "resort_adr": 58.84,
+      "city_adr": 93.3,
+      "overall_adr": 81.61
+    },
+    {
+      "month": "Apr",
+      "month_num": 4,
+      "resort_adr": 79.38,
+      "city_adr": 112.53,
+      "overall_adr": 101.8
+    },
+    {
+      "month": "May",
+      "month_num": 5,
+      "resort_adr": 80.55,
+      "city_adr": 123.32,
+      "overall_adr": 110.49
+    },
+    {
+      "month": "Jun",
+      "month_num": 6,
+      "resort_adr": 112.34,
+      "city_adr": 120.33,
+      "overall_adr": 118.12
+    },
+    {
+      "month": "Jul",
+      "month_num": 7,
+      "resort_adr": 157.75,
+      "city_adr": 112.32,
+      "overall_adr": 128.71
+    },
+    {
+      "month": "Aug",
+      "month_num": 8,
+      "resort_adr": 188.75,
+      "city_adr": 116.37,
+      "overall_adr": 141.97
+    },
+    {
+      "month": "Sep",
+      "month_num": 9,
+      "resort_adr": 95.7,
+      "city_adr": 111.92,
+      "overall_adr": 107.15
+    },
+    {
+      "month": "Oct",
+      "month_num": 10,
+      "resort_adr": 64.12,
+      "city_adr": 101.91,
+      "overall_adr": 89.98
+    },
+    {
+      "month": "Nov",
+      "month_num": 11,
+      "resort_adr": 49.66,
+      "city_adr": 90.13,
+      "overall_adr": 75.65
+    },
+    {
+      "month": "Dec",
+      "month_num": 12,
+      "resort_adr": 71.77,
+      "city_adr": 91.7,
+      "overall_adr": 83.96
+    }
+  ],
+  "room_type_distribution": [
+    {
+      "room_type": "H",
+      "avg_adr": 190.12,
+      "count": 595
+    },
+    {
+      "room_type": "G",
+      "avg_adr": 183.98,
+      "count": 2003
+    },
+    {
+      "room_type": "F",
+      "avg_adr": 172.43,
+      "count": 2817
+    },
+    {
+      "room_type": "C",
+      "avg_adr": 164.41,
+      "count": 908
+    },
+    {
+      "room_type": "L",
+      "avg_adr": 148.0,
+      "count": 5
+    },
+    {
+      "room_type": "E",
+      "avg_adr": 127.02,
+      "count": 6403
+    },
+    {
+      "room_type": "D",
+      "avg_adr": 122.11,
+      "count": 18974
+    },
+    {
+      "room_type": "B",
+      "avg_adr": 95.02,
+      "count": 1061
+    },
+    {
+      "room_type": "A",
+      "avg_adr": 92.45,
+      "count": 84377
+    }
+  ],
+  "market_segment_distribution": [
+    {
+      "segment": "Direct",
+      "avg_adr": 118.15,
+      "count": 12311
+    },
+    {
+      "segment": "Online TA",
+      "avg_adr": 118.07,
+      "count": 56045
+    },
+    {
+      "segment": "Aviation",
+      "avg_adr": 102.74,
+      "count": 231
+    },
+    {
+      "segment": "Offline TA/TO",
+      "avg_adr": 88.47,
+      "count": 23847
+    },
+    {
+      "segment": "Groups",
+      "avg_adr": 80.83,
+      "count": 19473
+    },
+    {
+      "segment": "Corporate",
+      "avg_adr": 70.63,
+      "count": 5199
+    },
+    {
+      "segment": "Complementary",
+      "avg_adr": 57.46,
+      "count": 35
+    },
+    {
+      "segment": "Undefined",
+      "avg_adr": 15.0,
+      "count": 2
+    }
+  ]
+}

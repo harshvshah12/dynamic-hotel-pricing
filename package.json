@@ -1,0 +1,19 @@
+{
+  "name": "dynamic-hotel-pricing",
+  "version": "1.0.0",
+  "description": "[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/) [![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688.svg)](https://fastapi.tiangolo.com/) [![React](https://img.shields.io/badge/React-18.3-61DAFB.svg)](https://reactjs.org/) [![TailwindCSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC.svg)](https://tailwindcss.com/) [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.7-F7931E.svg)](https://scikit-learn.org/) [![Playwright](https://img.shields.io/badge/Playwright-E2E%20Tested-45ba4b.svg)](https://playwright.dev/)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.59.0"
+  }
+}

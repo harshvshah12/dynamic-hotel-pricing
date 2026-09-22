@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+datasets/raw/*
+!datasets/raw/.gitkeep
+model_artifacts/*.joblib
+!model_artifacts/.gitkeep
+.playwright-mcp/
+test-results/
+playwright-report/
