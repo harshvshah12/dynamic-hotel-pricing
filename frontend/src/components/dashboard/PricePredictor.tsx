@@ -441,6 +441,53 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
             </div>
           </div>
         </div>
+
+        {/* NEW: Explainability & Calculation Verification */}
+        <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-bold text-white flex items-center space-x-2">
+              <ShieldAlert className="w-4 h-4 text-purple-400" />
+              <span>Decision Explainability & Verification</span>
+            </h3>
+            <span className="text-xs text-slate-400">Step-by-step math breakdown</span>
+          </div>
+          
+          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-[11px] text-slate-300 space-y-3">
+            <div className="flex justify-between items-center border-b border-slate-800/50 pb-2">
+              <span className="text-slate-400">1. Base Ensemble ADR (ML Output)</span>
+              <span className="font-bold text-white">€{prediction ? prediction.ensemble_weighted_adr.toFixed(2) : '116.80'}</span>
+            </div>
+            
+            <div className="flex justify-between items-center border-b border-slate-800/50 pb-2">
+              <span className="text-slate-400">2. Occupancy Multiplier ({formData.current_occupancy_rate * 100}% occupancy)</span>
+              <span className="text-emerald-400 font-bold">× {prediction ? prediction.dynamic_breakdown.occupancy_multiplier.toFixed(3) : '1.050'}</span>
+            </div>
+            
+            <div className="flex justify-between items-center border-b border-slate-800/50 pb-2">
+              <span className="text-slate-400">3. Lead Time Multiplier ({formData.lead_time} days)</span>
+              <span className="text-blue-400 font-bold">× {prediction ? prediction.dynamic_breakdown.lead_time_multiplier.toFixed(3) : '1.000'}</span>
+            </div>
+            
+            <div className="flex justify-between items-center border-b border-slate-800/50 pb-2">
+              <span className="text-slate-400">4. Calculated Unbounded Price (1 × 2 × 3)</span>
+              <span className="font-bold text-slate-200">€{prediction ? prediction.dynamic_breakdown.unbounded_price.toFixed(2) : '122.64'}</span>
+            </div>
+
+            <div className="flex justify-between items-center pt-1">
+              <span className="text-purple-400 font-bold">5. Final Constrained Price (Clamped)</span>
+              <span className="font-bold text-purple-300 text-sm">€{prediction ? prediction.final_recommended_price.toFixed(2) : '122.64'}</span>
+            </div>
+            
+            {(prediction?.dynamic_breakdown.is_clamped_to_floor || prediction?.dynamic_breakdown.is_clamped_to_ceiling || prediction?.dynamic_breakdown.surge_capped) && (
+              <div className="mt-2 bg-amber-500/10 text-amber-400 p-2 rounded border border-amber-500/20 text-[10px]">
+                <strong>Rule Applied:</strong> 
+                {prediction.dynamic_breakdown.is_clamped_to_floor && ' Price was raised to meet the minimum floor threshold.'}
+                {prediction.dynamic_breakdown.is_clamped_to_ceiling && ' Price was reduced to respect the maximum ceiling threshold.'}
+                {prediction.dynamic_breakdown.surge_capped && ' Maximum daily surge limit (+60%) was applied.'}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
