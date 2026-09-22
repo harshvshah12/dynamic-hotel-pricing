@@ -7,7 +7,7 @@ import {
   FeatureImportanceItem
 } from '../types';
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
 
 export const apiService = {
   async checkHealth(): Promise<{ status: string; models_loaded: boolean; model_count: number }> {
