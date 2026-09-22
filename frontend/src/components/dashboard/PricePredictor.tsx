@@ -84,7 +84,7 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           {/* Row 1: Room Tier & Meal Plan */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-slate-300 font-semibold mb-1">Room Category</label>
               <select
@@ -119,7 +119,7 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
           </div>
 
           {/* Row 2: Arrival Month & Day */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-slate-300 font-semibold mb-1">Arrival Month</label>
               <select
@@ -192,7 +192,7 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
           </div>
 
           {/* Row 5: Stay Length (Weekend & Weekdays) */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-slate-300 font-semibold mb-1">Weekend Nights</label>
               <input
@@ -218,7 +218,7 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
           </div>
 
           {/* Row 6: Guest Composition */}
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <div>
               <label className="block text-slate-300 font-semibold mb-1">Adults</label>
               <input
@@ -255,7 +255,7 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
           </div>
 
           {/* Row 7: Market Segment & Customer Type */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-slate-300 font-semibold mb-1">Market Segment</label>
               <select
@@ -324,7 +324,7 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
               </div>
             </div>
 
-            <div className="bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-right">
+            <div className="bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-left sm:text-right">
               <span className="text-[11px] text-slate-400 block font-medium">90% Confidence Interval</span>
               <span className="text-sm font-mono font-bold text-emerald-300">
                 €{prediction?.dynamic_breakdown ? prediction.dynamic_breakdown.confidence_interval_low.toFixed(2) : '118.20'} – €{prediction?.dynamic_breakdown ? prediction.dynamic_breakdown.confidence_interval_high.toFixed(2) : '138.80'}
@@ -424,7 +424,7 @@ export const PricePredictor: React.FC<PricePredictorProps> = ({
           </div>
 
           {/* Ensembles Comparison Footer */}
-          <div className="mt-4 pt-4 border-t border-slate-800 grid grid-cols-2 gap-3 text-xs">
+          <div className="mt-4 pt-4 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3">
               <span className="text-emerald-400 font-bold block">Weighted Blending Ensemble (Selected)</span>
               <span className="text-lg font-mono font-extrabold text-white">

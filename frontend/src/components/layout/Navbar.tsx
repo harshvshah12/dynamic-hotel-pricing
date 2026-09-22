@@ -39,7 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex flex-col sm:flex-row items-center justify-between py-3 sm:py-0 sm:h-16 gap-3 sm:gap-0">
           {/* Logo & Platform Name */}
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
@@ -61,7 +61,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Hotel Filter & System Status Badge */}
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 sm:gap-0 sm:space-x-4">
             <div className="flex items-center bg-slate-800/80 border border-slate-700/60 rounded-lg p-1">
               <button
                 onClick={() => setSelectedHotel('City Hotel')}
@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             
             <button
               onClick={() => setActiveTab('explanation')}
-              className="ml-2 flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-xs font-semibold hover:bg-indigo-500/30 transition-all"
+              className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-xs font-semibold hover:bg-indigo-500/30 transition-all"
             >
               <Layers className="w-4 h-4" />
               <span>Used 4 Models + 2 Ensemble</span>

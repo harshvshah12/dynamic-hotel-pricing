@@ -263,8 +263,8 @@ export const ExecutiveSummary: React.FC<ExecutiveSummaryProps> = ({
                     {m.name}
                   </span>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <span className="text-slate-400 font-mono">RMSE: €{m.rmse.toFixed(2)}</span>
+                <div className="flex flex-col sm:flex-row items-end sm:items-center sm:space-x-4">
+                  <span className="text-slate-400 font-mono text-[10px] sm:text-xs">RMSE: €{m.rmse.toFixed(2)}</span>
                   <span className="font-mono font-bold text-white">R² {m.r2.toFixed(4)}</span>
                 </div>
               </div>

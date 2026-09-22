@@ -162,8 +162,8 @@ export const App: React.FC = () => {
 
       {/* System Status Footer */}
       <footer className="sticky bottom-0 z-50 bg-slate-950/80 backdrop-blur-md border-t border-slate-800/80 py-2 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-[10px] uppercase tracking-wider font-mono text-slate-500">
-          <div className="flex items-center space-x-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-0 text-[10px] uppercase tracking-wider font-mono text-slate-500">
+          <div className="flex items-center space-x-3 sm:space-x-6">
             <span className="flex items-center text-emerald-400">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-2" />
               LUMINA RMS ONLINE
