@@ -8,6 +8,7 @@ import { ScenarioSimulator } from './components/dashboard/ScenarioSimulator';
 import { HistoricalAnalytics } from './components/dashboard/HistoricalAnalytics';
 import { PricingRulesView } from './components/dashboard/PricingRulesView';
 import { ModelsExplanationView } from './components/dashboard/ModelsExplanationView';
+import { ArchitectureView } from './components/dashboard/ArchitectureView';
 import { apiService } from './services/api';
 import {
   BookingInput,
@@ -158,6 +159,8 @@ export const App: React.FC = () => {
         {activeTab === 'rules' && <PricingRulesView />}
 
         {activeTab === 'explanation' && <ModelsExplanationView />}
+
+        {activeTab === 'architecture' && <ArchitectureView />}
       </main>
 
       {/* System Status Footer */}

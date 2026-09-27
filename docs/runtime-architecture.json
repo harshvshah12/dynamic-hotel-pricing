@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Lumina RMS — High-Level Runtime Architecture & Trust Boundaries",
+    "output": "runtime-architecture.html",
+    "quality_profile": "showcase",
+    "viewBox": [1140, 480],
+    "views": [
+      {
+        "id": "quote-path",
+        "label": "Primary Quote Path",
+        "focus": ["client", "edge_cdn", "api_gateway", "preprocessor", "ensemble_service", "base_regressors", "meta_ensemble", "pricing_engine"],
+        "note": "Primary synchronous execution pipeline from reservation parameters to final clamped ADR quote."
+      },
+      {
+        "id": "ml-ensemble-cluster",
+        "label": "ML Inference Core",
+        "focus": ["preprocessor", "ensemble_service", "base_regressors", "meta_ensemble", "model_store"],
+        "note": "Parallel evaluation across 4 orthogonal base models combined with Stacking Meta-Learner and SLSQP blend."
+      },
+      {
+        "id": "policy-and-attribution",
+        "label": "Revenue Policy & XAI",
+        "focus": ["api_gateway", "pricing_engine", "xai_engine"],
+        "note": "Real-time occupancy and lead-time dynamic adjustments coupled with additive waterfall attribution."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "client",
+      "type": "external",
+      "label": "Web & Mobile Client",
+      "sublabel": "React 18 + Vite SPA",
+      "tag": "HTTPS / TLS 1.3",
+      "pos": [50, 75],
+      "size": [150, 60]
+    },
+    {
+      "id": "pms_ota",
+      "type": "external",
+      "label": "PMS & Channel Manager",
+      "sublabel": "Reservation Feeds",
+      "tag": "Booking Stream",
+      "pos": [50, 215],
+      "size": [150, 60]
+    },
+    {
+      "id": "edge_cdn",
+      "type": "cloud",
+      "label": "Vercel Edge Network",
+      "sublabel": "Global CDN & Ingress",
+      "brand": "vercel",
+      "tag": "Edge Termination",
+      "pos": [260, 75],
+      "size": [150, 60]
+    },
+    {
+      "id": "api_gateway",
+      "type": "backend",
+      "label": "FastAPI REST Gateway",
+      "sublabel": "Pydantic v2 Schema Guard",
+      "brand": "fastapi",
+      "tag": ":8000 / Uvicorn",
+      "pos": [470, 75],
+      "size": [160, 60]
+    },
+    {
+      "id": "preprocessor",
+      "type": "backend",
+      "label": "ColumnTransformer",
+      "sublabel": "StandardScaler + OneHot",
+      "brand": "python",
+      "tag": "Zero Data Leakage",
+      "pos": [690, 75],
+      "size": [160, 60]
+    },
+    {
+      "id": "ensemble_service",
+      "type": "backend",
+      "label": "ModelService Singleton",
+      "sublabel": "In-Memory Predictor Cache",
+      "tag": "Sub-50ms Latency",
+      "pos": [910, 75],
+      "size": [160, 60]
+    },
+    {
+      "id": "base_regressors",
+      "type": "backend",
+      "label": "4x Base Regressors",
+      "sublabel": "Ridge, RF, HistGB, ET",
+      "tag": "Parallel OOF Trees",
+      "pos": [910, 215],
+      "size": [160, 60]
+    },
+    {
+      "id": "meta_ensemble",
+      "type": "backend",
+      "label": "Ensemble Combiner",
+      "sublabel": "SLSQP Blend & Stacking Meta",
+      "tag": "R²=0.862 Benchmark",
+      "pos": [690, 215],
+      "size": [160, 60]
+    },
+    {
+      "id": "pricing_engine",
+      "type": "backend",
+      "label": "Revenue Policy Engine",
+      "sublabel": "Dynamic Multipliers & Clamp",
+      "tag": "Bounds [€35, €650]",
+      "pos": [470, 215],
+      "size": [160, 60]
+    },
+    {
+      "id": "xai_engine",
+      "type": "backend",
+      "label": "XAI Attribution Engine",
+      "sublabel": "Global MDI & Waterfall",
+      "tag": "Explainable AI",
+      "pos": [690, 355],
+      "size": [160, 60]
+    },
+    {
+      "id": "model_store",
+      "type": "database",
+      "label": "Artifact Repository",
+      "sublabel": "Serialized .joblib & JSON",
+      "tag": "Immutable Storage",
+      "pos": [910, 355],
+      "size": [160, 60]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Untrusted Client Perimeter",
+      "wraps": ["client", "pms_ota"],
+      "pad": 16
+    },
+    {
+      "kind": "security-group",
+      "label": "Edge Ingress Boundary (TLS 1.3)",
+      "wraps": ["edge_cdn"],
+      "pad": 14
+    },
+    {
+      "kind": "region",
+      "label": "Trusted Core Compute & ML Execution Perimeter",
+      "wraps": [
+        "api_gateway",
+        "preprocessor",
+        "ensemble_service",
+        "base_regressors",
+        "meta_ensemble",
+        "pricing_engine",
+        "xai_engine",
+        "model_store"
+      ],
+      "pad": 20
+    }
+  ],
+  "connections": [
+    {
+      "id": "client-to-edge",
+      "from": "client",
+      "to": "edge_cdn",
+      "label": "HTTPS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ota-to-edge",
+      "from": "pms_ota",
+      "to": "edge_cdn",
+      "label": "OTA Feeds",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "bottom"
+    },
+    {
+      "id": "edge-to-api",
+      "from": "edge_cdn",
+      "to": "api_gateway",
+      "label": "REST / JSON",
+      "variant": "emphasis"
+    },
+    {
+      "id": "api-to-preprocessor",
+      "from": "api_gateway",
+      "to": "preprocessor",
+      "label": "Transform",
+      "variant": "emphasis"
+    },
+    {
+      "id": "preprocessor-to-service",
+      "from": "preprocessor",
+      "to": "ensemble_service",
+      "label": "Vector (X)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "service-to-regressors",
+      "from": "ensemble_service",
+      "to": "base_regressors",
+      "label": "Inference",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "regressors-to-meta",
+      "from": "base_regressors",
+      "to": "meta_ensemble",
+      "label": "4x OOF ADR",
+      "variant": "emphasis",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "meta-to-pricing",
+      "from": "meta_ensemble",
+      "to": "pricing_engine",
+      "label": "Base ADR",
+      "variant": "emphasis",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "store-to-regressors",
+      "from": "model_store",
+      "to": "base_regressors",
+      "label": "Load .joblib",
+      "variant": "security",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "meta-to-xai",
+      "from": "meta_ensemble",
+      "to": "xai_engine",
+      "label": "Attribution",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Edge Ingress & Client Layer",
+      "items": [
+        "Vercel Edge CDN fronts React 18 + Vite SPA with automated TLS 1.3",
+        "PMS & OTA channel feeds stream reservation events via REST"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "ML Ensemble Inference Core",
+      "items": [
+        "ColumnTransformer (StandardScaler + OneHot) strictly fit on 80% split",
+        "4 base regressors (Ridge, RF, HistGB, ET) evaluate in parallel",
+        "Stacking Meta-Learner + SLSQP blending optimize final ADR (R²=0.862)"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Revenue Policy & Security",
+      "items": [
+        "Decoupled operational rules: occupancy multiplier & lead-time decay",
+        "Hard bounds [€35 floor, €650 ceiling] protect hotel revenue margins",
+        "FastAPI + Pydantic v2 validation with read-only model artifacts"
+      ]
+    }
+  ]
+}

@@ -8,7 +8,8 @@ import {
   HelpCircle,
   ShieldCheck,
   Activity,
-  Layers
+  Layers,
+  Network
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -34,6 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'explainability', label: 'Explainable AI (XAI)', icon: HelpCircle },
     { id: 'analytics', label: 'Demand & History', icon: BarChart3 },
     { id: 'rules', label: 'Revenue Rules', icon: ShieldCheck },
+    { id: 'architecture', label: 'System Architecture', icon: Network },
   ];
 
   return (
