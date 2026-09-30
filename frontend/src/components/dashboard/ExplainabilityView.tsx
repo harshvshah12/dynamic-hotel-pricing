@@ -77,7 +77,7 @@ export const ExplainabilityView: React.FC<ExplainabilityViewProps> = ({
       {/* Grid: Global Feature Importance vs Local Live Waterfall */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left: Global Feature Importance (6 cols) */}
-        <div className="lg:col-span-6 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <div className="lg:col-span-6 min-w-0 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4">
           <div className="border-b border-slate-800 pb-3 flex items-center justify-between">
             <div>
               <h3 className="font-bold text-white text-sm">Global Feature Importance (MDI & Permutation)</h3>
@@ -89,7 +89,7 @@ export const ExplainabilityView: React.FC<ExplainabilityViewProps> = ({
           </div>
 
           <div className="h-80 w-full">
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={280}>
               <BarChart
                 layout="vertical"
                 data={topGroups}
@@ -127,7 +127,7 @@ export const ExplainabilityView: React.FC<ExplainabilityViewProps> = ({
         </div>
 
         {/* Right: Local Live Waterfall Attribution (6 cols) */}
-        <div className="lg:col-span-6 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <div className="lg:col-span-6 min-w-0 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4">
           <div className="border-b border-slate-800 pb-3 flex items-center justify-between">
             <div>
               <h3 className="font-bold text-white text-sm">Live Quote Attribution Breakdown</h3>

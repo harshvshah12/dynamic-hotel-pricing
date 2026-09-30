@@ -72,7 +72,7 @@ export const HistoricalAnalytics: React.FC<HistoricalAnalyticsProps> = ({ histor
       {/* Grid: Monthly Seasonality Curve & Room Tier Dispersion */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Monthly Seasonality Comparison */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+        <div className="min-w-0 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
           <div className="border-b border-slate-800 pb-3 flex items-center justify-between">
             <div>
               <h3 className="font-bold text-white text-sm">Monthly ADR Seasonality (Resort vs. City)</h3>
@@ -81,8 +81,8 @@ export const HistoricalAnalytics: React.FC<HistoricalAnalyticsProps> = ({ histor
             <span className="text-[11px] font-mono text-emerald-400 font-semibold">12-Month Cycle</span>
           </div>
 
-          <div className="h-72 w-full">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-72 w-full min-w-0 min-h-[260px]">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={260}>
               <LineChart data={monthlyData} margin={{ top: 10, right: 20, bottom: 10, left: 10 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                 <XAxis dataKey="month" stroke="#94a3b8" tick={{ fontSize: 10 }} />
@@ -110,7 +110,7 @@ export const HistoricalAnalytics: React.FC<HistoricalAnalyticsProps> = ({ histor
         </div>
 
         {/* Room Category Price Dispersion */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+        <div className="min-w-0 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
           <div className="border-b border-slate-800 pb-3 flex items-center justify-between">
             <div>
               <h3 className="font-bold text-white text-sm">Room Tier Price Dispersion</h3>
@@ -119,14 +119,22 @@ export const HistoricalAnalytics: React.FC<HistoricalAnalyticsProps> = ({ histor
             <span className="text-[11px] font-mono text-purple-400 font-semibold">Tiers A to H</span>
           </div>
 
-          <div className="h-72 w-full">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-72 w-full min-w-0 min-h-[260px]">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={260}>
               <BarChart
                 data={roomTypeData}
                 margin={{ top: 10, right: 20, bottom: 10, left: 10 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                <XAxis dataKey="room_type" stroke="#94a3b8" tick={{ fontSize: 9 }} />
+                <XAxis
+                  dataKey="room_type"
+                  stroke="#94a3b8"
+                  tick={{ fontSize: 9 }}
+                  tickFormatter={(val: string) => {
+                    const match = val.match(/Tier [A-H]/);
+                    return match ? match[0] : val.substring(0, 8);
+                  }}
+                />
                 <YAxis stroke="#94a3b8" unit="€" tick={{ fontSize: 10 }} />
                 <Tooltip
                   content={({ payload }) => {

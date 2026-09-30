@@ -83,13 +83,13 @@ export const ModelsExplanationView: React.FC = () => {
           </div>
 
           {/* Accuracy Improvement Chart */}
-          <div className="space-y-4">
+          <div className="space-y-4 min-w-0">
             <h3 className="text-lg font-semibold text-white flex items-center">
               <TrendingUp className="w-5 h-5 mr-2 text-sky-400" /> Accuracy & Score Improvement
             </h3>
             
             <div className="bg-slate-800/30 p-4 rounded-lg border border-slate-700/50 h-[350px]">
-              <ResponsiveContainer width="100%" height="100%">
+              <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={300}>
                 <BarChart data={modelPerformanceData} margin={{ top: 10, right: 10, left: -20, bottom: 40 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
                   <XAxis 

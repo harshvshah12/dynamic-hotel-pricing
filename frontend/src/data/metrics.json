@@ -1,0 +1,130 @@
+{
+  "baseline_ridge": {
+    "name": "Ridge Linear Baseline",
+    "type": "Linear L2 Regularized Regressor",
+    "cv_metrics": {
+      "cv_mae_mean": 22.1352,
+      "cv_mae_std": 0.0874,
+      "cv_rmse_mean": 30.0013,
+      "cv_rmse_std": 0.2077,
+      "cv_r2_mean": 0.5852,
+      "cv_r2_std": 0.003,
+      "cv_mape_mean": 24.44,
+      "training_time_sec": 1.06
+    },
+    "test_metrics": {
+      "mae": 22.0334,
+      "rmse": 29.874,
+      "r2": 0.5835,
+      "mape_pct": 24.75,
+      "explained_variance": 0.5836,
+      "medae": 16.9172
+    }
+  },
+  "random_forest": {
+    "name": "Random Forest Regressor",
+    "type": "Bagging Ensemble (Decision Trees)",
+    "cv_metrics": {
+      "cv_mae_mean": 10.707,
+      "cv_mae_std": 0.0618,
+      "cv_rmse_mean": 17.5736,
+      "cv_rmse_std": 0.254,
+      "cv_r2_mean": 0.8577,
+      "cv_r2_std": 0.0025,
+      "cv_mape_mean": 11.21,
+      "training_time_sec": 47.6
+    },
+    "test_metrics": {
+      "mae": 10.5299,
+      "rmse": 17.2471,
+      "r2": 0.8612,
+      "mape_pct": 11.2,
+      "explained_variance": 0.8612,
+      "medae": 5.7245
+    }
+  },
+  "hist_gradient_boosting": {
+    "name": "HistGradientBoosting Regressor",
+    "type": "Gradient Boosting Regressor",
+    "cv_metrics": {
+      "cv_mae_mean": 13.6629,
+      "cv_mae_std": 0.0691,
+      "cv_rmse_mean": 19.7175,
+      "cv_rmse_std": 0.2725,
+      "cv_r2_mean": 0.8209,
+      "cv_r2_std": 0.0029,
+      "cv_mape_mean": 14.73,
+      "training_time_sec": 9.97
+    },
+    "test_metrics": {
+      "mae": 13.5771,
+      "rmse": 19.3609,
+      "r2": 0.8251,
+      "mape_pct": 14.89,
+      "explained_variance": 0.8251,
+      "medae": 9.4534
+    }
+  },
+  "extra_trees": {
+    "name": "Extra Trees Regressor",
+    "type": "Extremely Randomized Trees Ensemble",
+    "cv_metrics": {
+      "cv_mae_mean": 11.0703,
+      "cv_mae_std": 0.1007,
+      "cv_rmse_mean": 17.9492,
+      "cv_rmse_std": 0.3018,
+      "cv_r2_mean": 0.8515,
+      "cv_r2_std": 0.0034,
+      "cv_mape_mean": 11.55,
+      "training_time_sec": 15.53
+    },
+    "test_metrics": {
+      "mae": 10.8835,
+      "rmse": 17.6829,
+      "r2": 0.8541,
+      "mape_pct": 11.58,
+      "explained_variance": 0.8541,
+      "medae": 6.0683
+    }
+  },
+  "stacking_ensemble": {
+    "name": "Stacking Meta-Regressor Ensemble",
+    "type": "5-Fold CV Out-of-Fold Stacking (Ridge Meta)",
+    "cv_metrics": {
+      "meta_coefficients": {
+        "baseline_ridge": -0.0117,
+        "random_forest": 0.7023,
+        "hist_gradient_boosting": 0.0497,
+        "extra_trees": 0.2785
+      }
+    },
+    "test_metrics": {
+      "mae": 10.5639,
+      "rmse": 17.193,
+      "r2": 0.8621,
+      "mape_pct": 11.21,
+      "explained_variance": 0.8621,
+      "medae": 5.7467
+    }
+  },
+  "weighted_ensemble": {
+    "name": "Performance-Weighted Blending Ensemble",
+    "type": "Validation MSE-Optimized Weighted Average",
+    "cv_metrics": {
+      "optimized_weights": {
+        "baseline_ridge": 0.0,
+        "random_forest": 0.7122,
+        "hist_gradient_boosting": 0.0161,
+        "extra_trees": 0.2716
+      }
+    },
+    "test_metrics": {
+      "mae": 10.573,
+      "rmse": 17.2015,
+      "r2": 0.8619,
+      "mape_pct": 11.26,
+      "explained_variance": 0.8619,
+      "medae": 5.8044
+    }
+  }
+}

@@ -23,6 +23,7 @@ import {
   Cell
 } from 'recharts';
 import { ModelMetricItem, ScatterSample } from '../../types';
+import defaultEvalSamples from '../../data/eval_results.json';
 
 interface ModelComparisonProps {
   metrics: Record<string, ModelMetricItem> | null;
@@ -45,14 +46,23 @@ export const ModelComparison: React.FC<ModelComparisonProps> = ({ metrics, evalS
     { key: 'ridge_pred', label: 'Ridge Linear Baseline' },
   ];
 
+  // Guaranteed fallback data so scatter plot always renders on Vercel
+  const activeSamples = (evalSamples?.scatter_samples && evalSamples.scatter_samples.length > 0)
+    ? evalSamples.scatter_samples
+    : defaultEvalSamples.scatter_samples;
+
+  const activeResiduals = (evalSamples?.residual_distribution && evalSamples.residual_distribution.length > 0)
+    ? evalSamples.residual_distribution
+    : defaultEvalSamples.residual_distribution;
+
   // Prepare scatter data for selected model
-  const scatterData = evalSamples?.scatter_samples.map((s) => ({
+  const scatterData = activeSamples.map((s) => ({
     actual: s.actual_adr,
     predicted: (s as any)[selectedModelKey] || s.weighted_pred,
     leadTime: s.lead_time,
     hotel: s.hotel,
     room: s.reserved_room_type
-  })) || [];
+  }));
 
   return (
     <div className="space-y-8">
@@ -176,7 +186,7 @@ export const ModelComparison: React.FC<ModelComparisonProps> = ({ metrics, evalS
       {/* Interactive Visualizations Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left: Actual vs Predicted Scatter Plot */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <div className="min-w-0 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
             <div>
               <h3 className="font-bold text-white text-sm">Actual vs. Predicted Room Rates (Holdout Samples)</h3>
@@ -193,8 +203,8 @@ export const ModelComparison: React.FC<ModelComparisonProps> = ({ metrics, evalS
             </select>
           </div>
 
-          <div className="h-72 w-full">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-72 w-full min-w-0 min-h-[260px]">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={260}>
               <ScatterChart margin={{ top: 10, right: 10, bottom: 20, left: 10 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                 <XAxis
@@ -236,25 +246,16 @@ export const ModelComparison: React.FC<ModelComparisonProps> = ({ metrics, evalS
         </div>
 
         {/* Right: Residual Error Distribution Histogram */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <div className="min-w-0 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 space-y-4">
           <div className="border-b border-slate-800 pb-3">
             <h3 className="font-bold text-white text-sm">Ensemble Residual Distribution (ŷ - y)</h3>
             <p className="text-[11px] text-slate-400">Distribution centered at €0.00 confirms zero prediction bias</p>
           </div>
 
-          <div className="h-72 w-full">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-72 w-full min-w-0 min-h-[260px]">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={260}>
               <BarChart
-                data={evalSamples?.residual_distribution || [
-                  { bin: '-30 to -25', count: 120 },
-                  { bin: '-20 to -15', count: 480 },
-                  { bin: '-10 to -5', count: 1850 },
-                  { bin: '-5 to 0', count: 4620 },
-                  { bin: '0 to 5', count: 4890 },
-                  { bin: '5 to 10', count: 2100 },
-                  { bin: '15 to 20', count: 530 },
-                  { bin: '25 to 30', count: 140 }
-                ]}
+                data={activeResiduals}
                 margin={{ top: 10, right: 10, bottom: 20, left: 10 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
@@ -274,7 +275,7 @@ export const ModelComparison: React.FC<ModelComparisonProps> = ({ metrics, evalS
                   }}
                 />
                 <Bar dataKey="count" fill="#3b82f6" radius={[4, 4, 0, 0]}>
-                  {evalSamples?.residual_distribution?.map((_, idx) => (
+                  {activeResiduals.map((_, idx) => (
                     <Cell key={idx} fill={idx >= 8 && idx <= 12 ? '#10b981' : '#3b82f6'} />
                   ))}
                 </Bar>

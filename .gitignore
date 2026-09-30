@@ -10,3 +10,4 @@ model_artifacts/*.joblib
 .playwright-mcp/
 test-results/
 playwright-report/
+~$*.docx
